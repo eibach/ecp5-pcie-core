@@ -6,8 +6,7 @@
 
 *The Lattice ECP5 Versa board on the testbed. Photo: Dirk Eibach.*
 
-PCI Express on an ECP5 usually means the vendor's IP core, built with the vendor's tools [CHECK THE EXACT NAME AND TERMS OF THE VENDOR IP BEFORE PUBLISHING].
-This project is an open alternative: a PCI Express endpoint with BAR0 registers, MSI and scatter-gather DMA, written in open source, driven by the
+This project is an open alternative to the vendor's PCI Express IP core: a PCI Express endpoint with BAR0 registers, MSI and scatter-gather DMA, written in open source, driven by the
 unmodified LitePCIe Linux driver, and built with an open toolchain (yosys, nextpnr-ecp5, Project Trellis, openFPGALoader). It runs on the
 **Lattice ECP5 Versa** board (LFE5UM-45F, the non-5G part), as a **Gen1 x1** endpoint so far.
 
@@ -110,4 +109,6 @@ No code was copied from projects that have no license.
 
 ## License
 
-[BSD-2-Clause for the tools, CC-BY-4.0 for the notes and the photo: TO BE DECIDED BY THE AUTHOR]
+- The tools and scripts (`scripts/`, `setup/`, `experiments/`, `env.sh`): [BSD-2-Clause](LICENSE).
+- The documentation (`docs/`, this README) and the photo: [CC-BY-4.0](LICENSE-docs).
+- The dependencies fetched by `setup/setup.sh` (LiteX, LitePCIe, LiteICLink, Migen, LiteScope) keep their own licenses (BSD-2-Clause for the Enjoy-Digital projects).
