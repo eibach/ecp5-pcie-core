@@ -1,0 +1,5 @@
+amaranth>=0.5.10,<0.6
+amaranth-boards
+pyserial
+pytest
+markdown>=3.5

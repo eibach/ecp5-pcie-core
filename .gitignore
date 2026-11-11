@@ -1,0 +1,9 @@
+# Fetched, built or generated: never committed.
+deps/
+build/
+toolchain/
+.venv/
+__pycache__/
+analyzer.csv
+*.bit
+*.bin

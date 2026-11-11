@@ -1,0 +1,8 @@
+# name          repository                                         commit                                    note
+# The exact versions the results were obtained with. Until the pull requests are merged, litepcie and liteiclink are the branches of the author's forks.
+migen           https://github.com/m-labs/migen.git                4c2ae8dfeea37f235b52acb8166f12acaaae4f7c  tested with this commit
+litex           https://github.com/enjoy-digital/litex.git         0f008ae4850a65b233b478c62119758741d1bf8c
+litex-boards    https://github.com/litex-hub/litex-boards.git      1ed2595695e9cd7cb92ae461de8e60ed4c9cb15f
+litescope       https://github.com/enjoy-digital/litescope.git     d45c2387d77e9833719e335e98e64d293e351ea3
+liteiclink      https://github.com/eibach/liteiclink.git           a2329efeab2f16bbb1cf19c83dcd831b49c5271d  branch ecp5-pcie-mode (PR enjoy-digital/liteiclink#111)
+litepcie        https://github.com/eibach/litepcie.git             588395109a2d9380a4df31dc919635409b471e6e  branch ecp5-soft-phy (PR enjoy-digital/litepcie#250, draft)
