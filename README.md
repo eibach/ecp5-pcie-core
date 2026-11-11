@@ -20,6 +20,10 @@ run it, the tested configurations, and the tools and notes around it.
 | `pcie` mode and analog attribute sets of `SerDesECP5` | LiteICLink pull request [#111](https://github.com/enjoy-digital/liteiclink/pull/111) |
 | Discussion | [litepcie issue #20](https://github.com/enjoy-digital/litepcie/issues/20) |
 
+**Upstream status:** the four pull requests are open. [#250](https://github.com/enjoy-digital/litepcie/pull/250), the adapter itself, is a **draft**: it depends on
+[#111](https://github.com/enjoy-digital/liteiclink/pull/111) and [#248](https://github.com/enjoy-digital/litepcie/pull/248) and will be marked ready for review when those are merged.
+Comments and test reports are welcome on the pull requests.
+
 Until the pull requests are merged, `setup/versions.lock` pins the exact versions to build. What is here is everything around the core: the **bring-up runbook** (what it took to make a real host enumerate the card, and how to diagnose each
 failure), host-side tools that need no compiler or Python on the test machine, a live status monitor, and the hardware log.
 
