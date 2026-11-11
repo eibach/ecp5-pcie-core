@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 """Live status page for the Versa PCIe bring-up design (LiteX bridge registers over UARTBone).
 
   python3 scripts/versa_monitor.py --csr-csv build/bringup_l75_s1/csr.csv --uart-port auto

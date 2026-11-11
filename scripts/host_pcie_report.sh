@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 # Host-side PCIe link report for the card under test (run ON THE HOST under test).
 # Read-only by default. Writes only with the explicit options below (they need root and change host state):
 #   --rescan          echo 1 > /sys/bus/pci/rescan

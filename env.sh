@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 # Source this file:  source env.sh
 # Puts the OSS CAD Suite (yosys, nextpnr-ecp5, prjtrellis, openFPGALoader, iverilog,
 # verilator, gtkwave) and the Amaranth virtualenv on PATH. No root needed.

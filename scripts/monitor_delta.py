@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 """Link-layer counters of the card over a test: the difference of two snapshots of the status page's API (32-bit wrap safe).
 
   curl -s localhost:8765/api/state > before.json   # before starting the soak

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 # Reproduces the user-space setup: OSS CAD Suite + Python venv with Amaranth.
 # Usage: setup/install-toolchain.sh [oss-cad-suite release date, e.g. 2026-10-30]
 set -euo pipefail

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 """BAR0 32-bit read/write test of the bring-up design, run ON THE HOST as root once the card enumerated.
 
 BAR0 offsets are added to the SoC's CSR origin, so the SoC's first CSRs are the "4 KB of registers": the test uses

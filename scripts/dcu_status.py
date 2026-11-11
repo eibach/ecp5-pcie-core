@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 """DCU status of the bring-up design over a litex_server (UARTBone): PLL/CDR lock, loss of signal, init FSM, idle delay.
 
   litex_server --uart --uart-port /dev/ttyUSB1 --uart-baudrate 115200 &

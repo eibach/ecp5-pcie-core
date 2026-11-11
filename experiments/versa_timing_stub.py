@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 
 #
 # Timing / resource feasibility check of LitePCIe's soft PHY on the ECP5 Versa (LFE5UM-45F).

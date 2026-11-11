@@ -1,3 +1,6 @@
+/* Copyright (c) 2026 Dirk Eibach
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
 /* Minimal 32-bit register access through a PCI resource file, for hosts without python/devmem:
  *   pcimem32 /sys/bus/pci/devices/0000:01:00.0/resource0 <offset> [value]
  * One mmap, one volatile 32-bit load or store per access (a single 4-byte PCIe memory TLP). */

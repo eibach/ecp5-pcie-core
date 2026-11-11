@@ -1,3 +1,6 @@
+/* Copyright (c) 2026 Dirk Eibach
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
 /* MSI test helper for a host without a driver for the card (run as root on the host).
  *
  *   msi_probe mem  <bdf> <seconds> [data]    MSI address = a pinned host RAM page (below 4 GiB, physical address from

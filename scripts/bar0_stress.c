@@ -1,3 +1,6 @@
+/* Copyright (c) 2026 Dirk Eibach
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
 /* BAR0 register stress without DMA (run as root, driver unloaded), for hosts without python.
  *
  *   bar0_stress <resource0> <seconds> [scratch_offset] [mem_offset] [mem_words]

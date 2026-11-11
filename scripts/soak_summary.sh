@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 # Summary of a litepcie_util dma_test soak (run ON THE HOST once the test has ended; do not touch the host while it runs).
 # Usage: soak_summary.sh <dma_test log>      (start the soak with: setsid nohup ./litepcie_util dma_test -w 32 -t 900 > log 2>&1 < /dev/null &)
 log=${1:?usage: soak_summary.sh <dma_test log>}

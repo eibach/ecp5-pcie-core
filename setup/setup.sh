@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 # Fetches the pinned LiteX, LitePCIe and LiteICLink (setup/versions.lock) into deps/ and installs them into the venv.
 # Run setup/install-toolchain.sh first (OSS CAD Suite and the venv). No root needed.
 set -euo pipefail

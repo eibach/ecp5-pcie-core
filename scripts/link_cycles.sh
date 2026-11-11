@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 # Link cycles on the host under test (run as root ON THE HOST):
 #   driver unload, card removal, Retrain Link on the root port, rescan, driver load, scratch_test and a 3 s DMA test,
 #   with the kernel log checked each time.

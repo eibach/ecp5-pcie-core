@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Dirk Eibach
+# SPDX-License-Identifier: BSD-2-Clause
 """Toolchain smoke test: Amaranth -> yosys -> nextpnr-ecp5 -> ecppack for the Versa (LFE5UM-45F).
 
   python scripts/smoke_build.py --no-rst   # blinky on a reset-less sync domain (the stock domain fails, see docs/toolchain-notes.md)
