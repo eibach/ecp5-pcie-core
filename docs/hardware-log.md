@@ -44,6 +44,15 @@ Upstream had moved (a refactor changed the register map), so the tests were repe
 - 20 link cycles: **20 of 20**, link back in 0.57 s, 1.66 Gbit/s, 0 errors each time.
 - nextpnr (seed 1, `sys` 62.5 MHz, `pcie_link` 75 MHz): `pcie_link` 82.8 MHz, lane clock 87.7 MHz (62.5), `sys` 74.7 MHz; 24400 LUT4 (55%), 10793 FF (24%), 56 of 108 DP16KD.
 
+## 2026-11-15: validation on the series rebased onto current upstream
+The LiteICLink branch was rebased onto the upstream master (transmit inhibit, the 3-bit `loopback` encoding, the SCI reconfiguration loop, `rx_los` masking in loopback, `tx_raw`/`rx_raw` names), with LiteICLink `26070d2` and LitePCIe `5883951`.
+Bitstream as before (`bench/soft/versa.py`, `--analog wizard`, seed 1, `--ltssm-autostart`, `--flash-freq 62.0`, OSS CAD Suite 2026-10-30), written to the SPI flash with the host halted, then a cold boot:
+- Enumeration `1204:ec11`, Region 0 128K, x1 at 2.5GT/s; the register map differs from the previous build only in the generation date and the identifier string; `scratch_test` OK; `dma_test` 8 s: 1.66 Gbit/s, 0 errors.
+- 20 link cycles: **20 of 20**, link back in 0.56 to 0.59 s, 1.66 Gbit/s, 0 errors each time.
+- 15 minute soak: 4469 samples, mean 1.660 Gbit/s, 22.79M buffers, one event of 63 lost buffers ("Reading/Writing too late, 32 buffers lost" in the kernel log) at 935 s of host uptime, the moment the host's `systemd-tmpfiles-clean` timer ran (host scheduling, see the lesson on idle hosts). The card counters over the soak: no replay, no link-layer error, no receiver error, no overflow, link in L0 throughout; 851839 interrupts.
+- nextpnr (seed 1): `pcie_clk` 84.4 MHz (75), `sys` 71.5 MHz (62.5), lane clock 100.8 MHz (62.5).
+- A first DMA test showed 0.00 Gbit/s because the host had the Linux module of an earlier build loaded: the module must come from the same build as the bitstream (the DMA registers moved between builds); with the matching module the test ran at full speed.
+
 ## Lessons
 1. J4 on pins 3 and 5, the design in the SPI flash at 62 MHz with autostart, cold boot: without all three the host never sees the card.
 2. Never reconfigure the FPGA under a running link. Halt, flash, cold boot.
