@@ -16,15 +16,16 @@ run it, the tested configurations, and the tools and notes around it.
 
 | What | Where |
 |---|---|
-| ECP5 lane adapter, DCU model, tests, Versa bench, driver ID | LitePCIe pull requests [#250](https://github.com/enjoy-digital/litepcie/pull/250) (draft), [#248](https://github.com/enjoy-digital/litepcie/pull/248), [#249](https://github.com/enjoy-digital/litepcie/pull/249) |
-| `pcie` mode and analog attribute sets of `SerDesECP5` | LiteICLink pull request [#111](https://github.com/enjoy-digital/liteiclink/pull/111) |
+| ECP5 lane adapter, DCU model, tests, Versa bench, driver ID | LitePCIe pull requests [#250](https://github.com/enjoy-digital/litepcie/pull/250), [#248](https://github.com/enjoy-digital/litepcie/pull/248), [#249](https://github.com/enjoy-digital/litepcie/pull/249) (all merged) |
+| ECP5 transceiver wrapper support (`rx_los`; the PCIe attributes live in the LitePCIe adapter) | LiteICLink pull request [#111](https://github.com/enjoy-digital/liteiclink/pull/111) (merged) |
 | Discussion | [litepcie issue #20](https://github.com/enjoy-digital/litepcie/issues/20) |
 
-**Upstream status:** the four pull requests are open. [#250](https://github.com/enjoy-digital/litepcie/pull/250), the adapter itself, is a **draft**: it depends on
-[#111](https://github.com/enjoy-digital/liteiclink/pull/111) and [#248](https://github.com/enjoy-digital/litepcie/pull/248) and will be marked ready for review when those are merged.
-Comments and test reports are welcome on the pull requests.
+**Upstream status:** all four pull requests are merged (2026-11-17 and 2026-11-20). The adapter and the Versa bench are in LitePCIe master
+(`bench/soft/versa.py`), and the ECP5 transceiver support is in LiteICLink master. The maintainer restructured the code before merging (the PCIe
+settings of the DCU moved from LiteICLink into the LitePCIe adapter); the merged result was rebuilt and re-run on the hardware below.
+Comments and test reports are welcome on the issue.
 
-Until the pull requests are merged, `setup/versions.lock` pins the exact versions to build. What is here is everything around the core: the **bring-up runbook** (what it took to make a real host enumerate the card, and how to diagnose each
+`setup/versions.lock` pins the exact upstream commits that the results were obtained with. What is here is everything around the core: the **bring-up runbook** (what it took to make a real host enumerate the card, and how to diagnose each
 failure), host-side tools that need no compiler or Python on the test machine, a live status monitor, and the hardware log.
 
 > **Written by an AI agent.** The notes and tools were written by Claude Code (Claude Sonnet 5.5) under the supervision of Dirk Eibach, who

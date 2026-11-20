@@ -53,6 +53,16 @@ Bitstream as before (`bench/soft/versa.py`, `--analog wizard`, seed 1, `--ltssm-
 - nextpnr (seed 1): `pcie_clk` 84.4 MHz (75), `sys` 71.5 MHz (62.5), lane clock 100.8 MHz (62.5).
 - A first DMA test showed 0.00 Gbit/s because the host had the Linux module of an earlier build loaded: the module must come from the same build as the bitstream (the DMA registers moved between builds); with the matching module the test ran at full speed.
 
+## 2026-11-20: validation of the merged upstream master
+All pull requests were merged upstream (LiteICLink `1783bea`, LitePCIe `2040efb`). The maintainer moved the PCIe settings of the DCU (`PCIE_MODE`, the 2.5 Gbps rate attributes, the receiver detection ports, the wizard analog set) from LiteICLink into the LitePCIe adapter and asked for a re-check on the hardware.
+Bitstream built from upstream master (`bench/soft/versa.py`, `--analog wizard`, seed 1, `--ltssm-autostart`, `--flash-freq 62.0`, OSS CAD Suite 2026-10-30), written to the SPI flash with the host off, then a cold boot:
+- The generated `DCUA` instance against the build of 2026-11-15 (before the restructuring): the same 101 parameters, 107 ports of which only four detection nets differ by name; the register map differs only in the date and the identifier string.
+- nextpnr (seed 1): `pcie_link_clk` 88.5 MHz (75 MHz), `sys_clk` 70.5 MHz (62.5 MHz), lane clock 103.5 MHz (62.5 MHz).
+- The link trained to L0 at power-on; enumeration `1204:ec11`, Region 0 128K, x1 at 2.5GT/s; `scratch_test` OK; `dma_test`: 1.66 Gbit/s, 0 errors.
+- 20 link cycles: **20 of 20**, link back in 0.55 to 0.58 s, 0 errors each time.
+- 15 minute soak, started after the host's cleanup timer had run: 4469 samples, mean 1.660 Gbit/s, 22.79M buffers, **0 errors**, no "too late", no AER; card counters over the soak: no replay, no link-layer error, no receiver error, no overflow, link in L0 throughout; 833749 interrupts.
+- Not repeated: the register stress without DMA.
+
 ## Lessons
 1. J4 on pins 3 and 5, the design in the SPI flash at 62 MHz with autostart, cold boot: without all three the host never sees the card.
 2. Never reconfigure the FPGA under a running link. Halt, flash, cold boot.
