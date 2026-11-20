@@ -36,15 +36,16 @@ def find_uart():
 
 class ServerProcess:
     """litex_server on the UART, restarted when it dies or the board re-enumerated (port 'auto' is searched again)."""
-    def __init__(self, port, baudrate):
-        self.port, self.baudrate, self.proc = port, baudrate, None
+    def __init__(self, port, baudrate, bind_port=1234):
+        self.port, self.baudrate, self.bind_port, self.proc = port, baudrate, bind_port, None
     def uart(self):
         return find_uart() if self.port == "auto" else self.port
     def start(self):
         uart = self.uart()
         if uart is None:
             raise RuntimeError("no Versa UART found (/dev/serial/by-id/*if01-port0)")
-        self.proc = subprocess.Popen(["litex_server", "--uart", "--uart-port", uart, "--uart-baudrate", str(self.baudrate)],
+        self.proc = subprocess.Popen(["litex_server", "--uart", "--uart-port", uart, "--uart-baudrate", str(self.baudrate),
+                                       "--bind-port", str(self.bind_port)],
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         time.sleep(2.5)
     def stop(self):
@@ -436,7 +437,7 @@ def main():
     ap.add_argument("--uart-port", help="start litex_server on this serial port (UARTBone), or 'auto' for the Versa's FT2232H channel B (searched again after a re-enumeration)")
     ap.add_argument("--uart-baudrate", default=115200, type=int)
     ap.add_argument("--server-host", default="localhost")
-    ap.add_argument("--server-port", default=1234, type=int)
+    ap.add_argument("--server-port", default=1234, type=int, help="port of litex_server (with --uart-port: the port the monitor's own server binds, e.g. when 1234 is taken)")
     ap.add_argument("--http-port", default=8765, type=int)
     ap.add_argument("--poll", default=0.1, type=float, help="pause between polling rounds (s)")
     ap.add_argument("--once", action="store_true", help="print one JSON snapshot and exit")
@@ -444,7 +445,7 @@ def main():
 
     server = None
     if args.uart_port:
-        server = ServerProcess(args.uart_port, args.uart_baudrate)
+        server = ServerProcess(args.uart_port, args.uart_baudrate, args.server_port)
         server.start()
     mon = Monitor(args.csr_csv, args.server_host, args.server_port, args.poll, server=server)
     try:
